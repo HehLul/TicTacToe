@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator = "@android:anim/bounce_interpolator"
+    >
+
+
+<!--    Animations require 3 attributes-->
+<!--    start pos, end pos, duration-->
+    <translate
+        android:fromXDelta="0"
+        android:toXDelta="200"
+        android:duration="1500"
+        android:repeatCount = "infinite"
+        android:repeatMode = "reverse"/>
+</set>
