@@ -3,7 +3,9 @@ package com.example.tictactoe;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.accessibility.AccessibilityViewCommand;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,7 +16,9 @@ import java.io.*;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    //Initialize button views
     Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;//ALL BUTTONS in grid
+    Button btnNext;
     int state = 0;
     int moves = 0;
 
@@ -47,14 +51,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn8.setOnClickListener(this);
         btn9 = findViewById(R.id.btn9);
         btn9.setOnClickListener(this);
+
+        //NEXT activity button initialized
+        btnNext = findViewById(R.id.btnNext);
+        btnNext.setOnClickListener(this);
+
     }
 
 
-    //When mouse click button, do...
+    //When mouse click button
     @Override
     public void onClick(View v) {
+        //if NEXT clicked, change activity
+        if(v.getId() == R.id.btnNext){
+            Intent iNext;
+            iNext = new Intent(MainActivity.this, Second_Activity.class);//set iNext to next activity
+            startActivity(iNext);//Execute activity
+        }
+
         //Update text of button that has been pressed
-        if (v.getId() == R.id.btn1) {
+        else if (v.getId() == R.id.btn1) {
             setText(btn1);
         } else if (v.getId() == R.id.btn2) {
             setText(btn2);
@@ -150,28 +166,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void resetGame() {
-    //1 second delay
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+      new Handler().postDelayed(new Runnable() {
+          @Override
+          public void run() {
+              //reset button values
+              btn1.setText("");
+              btn2.setText("");
+              btn3.setText("");
+              btn4.setText("");
+              btn5.setText("");
+              btn6.setText("");
+              btn7.setText("");
+              btn8.setText("");
+              btn9.setText("");
 
-        //reset button values
-        btn1.setText("");
-        btn2.setText("");
-        btn3.setText("");
-        btn4.setText("");
-        btn5.setText("");
-        btn6.setText("");
-        btn7.setText("");
-        btn8.setText("");
-        btn9.setText("");
+              moves = 0;//reset num of moves and state
+              state = 0;
+          }
+      }, 1000);//1 SECOND DELAY
 
-        moves = 0;//reset num of moves and state
-        state = 0;
 
     }
+
+
+
+
+
 }
 
 
