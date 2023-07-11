@@ -22,8 +22,15 @@ TextView splashText;
 
             //ANIMATION OF TEXT
             splashText = findViewById(R.id.splashText);//text id
-            Animation move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move);//load move file animation
-            splashText.startAnimation(move);//execute animation, can use startAnimation
+            //LOAD ANIMATIONS
+            Animation move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move);
+            Animation alpha = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.alpha);
+            Animation rotate = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate);
+            Animation scale = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale);
+
+            splashText.startAnimation(alpha);//execute animation
+            //splashText.startAnimation(rotate);//execute animation
+            //splashText.startAnimation(scale);//execute animation
 
 
         new Handler().postDelayed(new Runnable() {

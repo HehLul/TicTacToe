@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    rotate the text view from the centre -->
+<!--    didtn use repeatMode to prevent from glitches and instead increased toDegrees and duration to give illusion of smooth rotation-->
+    <rotate
+        android:fromDegrees="0"
+        android:toDegrees="36000"
+        android:duration = "20000"
+        android:pivotX="50%"
+        android:pivotY="50%"/>
+</set>
